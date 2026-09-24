@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComicCraft - AI Comic Story Creator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>ComicCraft</h1>
+        <h2>AI Comic Story Creator</h2>
+
+        <form action="/generate" method="post">
+
+            <label for="story_prompt">Story Prompt</label>
+            <textarea
+                id="story_prompt"
+                name="story_prompt"
+                placeholder="Enter your story idea..."
+                required></textarea>
+
+            <label for="character_name">Main Character Name</label>
+            <input
+                type="text"
+                id="character_name"
+                name="character_name"
+                placeholder="Enter character name"
+                required>
+
+            <label for="setting">Setting</label>
+            <input
+                type="text"
+                id="setting"
+                name="setting"
+                placeholder="Example: A futuristic city"
+                required>
+
+            <label for="tone">Story Tone</label>
+            <select id="tone" name="tone" required>
+                <option value="">Select a tone</option>
+                <option value="Funny">Funny</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Dramatic">Dramatic</option>
+                <option value="Mystery">Mystery</option>
+            </select>
+
+            <label for="art_style">Art Style</label>
+            <select id="art_style" name="art_style" required>
+                <option value="">Select an art style</option>
+                <option value="Comic">Comic</option>
+                <option value="Cartoon">Cartoon</option>
+                <option value="Anime">Anime</option>
+                <option value="Realistic">Realistic</option>
+            </select>
+
+            <button type="submit">Generate Comic</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
+<script src="https://js.puter.com/v2/"></script>
+
+<hr>
+
+<h2>AI Image Generation Test</h2>
+<button onclick="testImage()">Generate Test Image</button>
+
+<div id="imageResult"></div>
+
+<script>
+async function testImage() {
+    const result = document.getElementById("imageResult");
+    result.innerHTML = "Generating image... Please wait.";
+
+    try {
+        const image = await puter.ai.txt2img(
+            "A cute magical forest, colorful comic book illustration, fantasy adventure, beautiful trees, glowing lights"
+        );
+
+        result.innerHTML = "";
+        result.appendChild(image);
+
+        alert("IMAGE TEST SUCCESS");
+    } catch (error) {
+        result.innerHTML = "Image generation failed.";
+        console.error(error);
+        alert("IMAGE TEST FAILED");
+    }
+}
+</script>
