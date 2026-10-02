@@ -59,4 +59,4 @@ The project demonstrates the practical use of Generative AI for creative content
 
 ## Demonstration Status
 
-Completed 
+Completed
